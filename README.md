@@ -2,8 +2,6 @@
 
 [![Latest Version](https://img.shields.io/github/release/marcortola/cuentica.svg?style=flat-square)](https://github.com/marcortola/cuentica/releases)
 [![Build Status](https://img.shields.io/travis/marcortola/cuentica.svg?style=flat-square)](https://travis-ci.org/marcortola/cuentica)
-[![Quality Score](https://img.shields.io/scrutinizer/g/marcortola/cuentica.svg?style=flat-square)](https://scrutinizer-ci.com/g/marcortola/cuentica)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/marcortola/cuentica.svg?style=flat-square)](https://scrutinizer-ci.com/g/marcortola/cuentica)
 [![Total Downloads](https://img.shields.io/packagist/dt/marcortola/cuentica.svg?style=flat-square)](https://packagist.org/packages/marcortola/cuentica)
 
 Installation

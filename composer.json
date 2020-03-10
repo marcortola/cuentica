@@ -1,0 +1,46 @@
+{
+    "name": "marcortola/cuentica",
+    "type": "library",
+    "description": "Community API client for Cuéntica online management software",
+    "keywords": [
+        "cuentica",
+        "api"
+    ],
+    "homepage": "https://github.com/marcortola/cuentica",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "marcortola",
+            "email": "15958009+mortola@users.noreply.github.com"
+        }
+    ],
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.2",
+        "phpstan/phpstan": "^0.12.14",
+        "phpstan/phpstan-strict-rules": "^0.12.2",
+        "phpunit/phpunit": "^9",
+        "symplify/easy-coding-standard": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "MarcOrtola\\Cuentica\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MarcOrtola\\Cuentica\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "composer normalize --dry-run --no-interaction",
+            "vendor/bin/ecs check src --no-interaction",
+            "vendor/bin/phpstan analyse --no-interaction",
+            "vendor/bin/phpunit"
+        ],
+        "test-fix": [
+            "composer normalize --quiet --no-interaction",
+            "vendor/bin/ecs check src --fix --no-interaction"
+        ]
+    }
+}
