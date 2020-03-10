@@ -27,6 +27,16 @@ class Customer
     private ?string $defaultInvoiceLanguage = null;
     private ?bool $hasSurcharge = null;
 
+    public function __construct(string $address, string $town, string $postalCode, string $cif, string $region)
+    {
+        $this->address = $address;
+        $this->town = $town;
+        $this->postalCode = $postalCode;
+        $this->cif = $cif;
+        $this->region = $region;
+        $this->businessType = 'others';
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,7 +46,6 @@ class Customer
     {
         $this->id = $id;
     }
-
 
     public function getCif(): ?string
     {

@@ -27,14 +27,14 @@ class CustomerHydrator implements Hydrator
             );
         }
 
-        $customer = new Customer();
+        if (!isset($data['address'], $data['postal_code'], $data['town'], $data['cif'], $data['region'])) {
+            throw new HydrationException('Response is not hydratable');
+        }
+
+        $customer = new Customer($data['address'], $data['town'], $data['postal_code'], $data['cif'], $data['region']);
 
         if (isset($data['id'])) {
             $customer->setId($data['id']);
-        }
-
-        if (isset($data['cif'])) {
-            $customer->setCif($data['cif']);
         }
 
         if (isset($data['tradename'])) {
@@ -63,22 +63,6 @@ class CustomerHydrator implements Hydrator
 
         if (isset($data['surname_2'])) {
             $customer->setLastSurname($data['surname_2']);
-        }
-
-        if (isset($data['address'])) {
-            $customer->setAddress($data['address']);
-        }
-
-        if (isset($data['postal_code'])) {
-            $customer->setPostalCode($data['postal_code']);
-        }
-
-        if (isset($data['town'])) {
-            $customer->setTown($data['town']);
-        }
-
-        if (isset($data['region'])) {
-            $customer->setRegion($data['region']);
         }
 
         if (isset($data['country_code'])) {
