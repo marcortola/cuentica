@@ -14,6 +14,13 @@
             "email": "15958009+mortola@users.noreply.github.com"
         }
     ],
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "php-http/discovery": "^1.7",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",
         "phpstan/phpstan": "^0.12.14",
@@ -39,7 +46,7 @@
             "vendor/bin/phpunit"
         ],
         "test-fix": [
-            "composer normalize --quiet --no-interaction",
+            "composer normalize --no-interaction",
             "vendor/bin/ecs check src --fix --no-interaction"
         ]
     }
