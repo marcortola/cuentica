@@ -14,4 +14,10 @@ interface Hydrator
      * @return T
      */
     public function hydrate(ResponseInterface $response, string $class);
+
+    /**
+     * @param T $object
+     * @return mixed[]
+     */
+    public function dehydrate($object): array;
 }

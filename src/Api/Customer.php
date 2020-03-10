@@ -23,4 +23,14 @@ class Customer extends Api
 
         return $this->handleResponse($response, Model::class);
     }
+
+    public function create(Model $customer): Model
+    {
+        $response = $this->httpPost(
+            '/customer',
+            $this->hydrator->dehydrate($customer)
+        );
+
+        return $this->handleResponse($response, Model::class);
+    }
 }

@@ -4,28 +4,30 @@ namespace MarcOrtola\Cuentica\Model\Customer;
 
 class Customer
 {
-    private int $id;
-    private string $cif;
-    private string $tradeName;
-    private string $defaultPaymentMethod;
-    private string $businessType;
-    private string $businessName;
-    private string $name;
-    private string $firstSurname;
-    private string $lastSurname;
-    private string $address;
-    private string $postalCode;
-    private string $town;
-    private string $region;
-    private string $countryCode;
-    private string $contactPerson;
-    private string $phone;
-    private string $email;
-    private string $web;
-    private string $fax;
-    private string $personalComment;
+    private ?int $id = null;
+    private ?string $cif = null;
+    private ?string $tradeName = null;
+    private ?string $defaultPaymentMethod = null;
+    private ?string $businessType = null;
+    private ?string $businessName = null;
+    private ?string $name = null;
+    private ?string $firstSurname = null;
+    private ?string $lastSurname = null;
+    private ?string $address = null;
+    private ?string $postalCode = null;
+    private ?string $town = null;
+    private ?string $region = null;
+    private ?string $countryCode = null;
+    private ?string $contactPerson = null;
+    private ?string $phone = null;
+    private ?string $email = null;
+    private ?string $web = null;
+    private ?string $fax = null;
+    private ?string $personalComment = null;
+    private ?string $defaultInvoiceLanguage = null;
+    private ?bool $hasSurcharge = null;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -35,7 +37,8 @@ class Customer
         $this->id = $id;
     }
 
-    public function getCif(): string
+
+    public function getCif(): ?string
     {
         return $this->cif;
     }
@@ -45,7 +48,7 @@ class Customer
         $this->cif = $cif;
     }
 
-    public function getTradeName(): string
+    public function getTradeName(): ?string
     {
         return $this->tradeName;
     }
@@ -55,7 +58,7 @@ class Customer
         $this->tradeName = $tradeName;
     }
 
-    public function getDefaultPaymentMethod(): string
+    public function getDefaultPaymentMethod(): ?string
     {
         return $this->defaultPaymentMethod;
     }
@@ -65,7 +68,7 @@ class Customer
         $this->defaultPaymentMethod = $defaultPaymentMethod;
     }
 
-    public function getBusinessType(): string
+    public function getBusinessType(): ?string
     {
         return $this->businessType;
     }
@@ -75,7 +78,7 @@ class Customer
         $this->businessType = $businessType;
     }
 
-    public function getBusinessName(): string
+    public function getBusinessName(): ?string
     {
         return $this->businessName;
     }
@@ -85,7 +88,7 @@ class Customer
         $this->businessName = $businessName;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -95,7 +98,7 @@ class Customer
         $this->name = $name;
     }
 
-    public function getFirstSurname(): string
+    public function getFirstSurname(): ?string
     {
         return $this->firstSurname;
     }
@@ -105,7 +108,7 @@ class Customer
         $this->firstSurname = $firstSurname;
     }
 
-    public function getLastSurname(): string
+    public function getLastSurname(): ?string
     {
         return $this->lastSurname;
     }
@@ -115,7 +118,7 @@ class Customer
         $this->lastSurname = $lastSurname;
     }
 
-    public function getAddress(): string
+    public function getAddress(): ?string
     {
         return $this->address;
     }
@@ -125,7 +128,7 @@ class Customer
         $this->address = $address;
     }
 
-    public function getPostalCode(): string
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
@@ -135,7 +138,7 @@ class Customer
         $this->postalCode = $postalCode;
     }
 
-    public function getTown(): string
+    public function getTown(): ?string
     {
         return $this->town;
     }
@@ -145,7 +148,7 @@ class Customer
         $this->town = $town;
     }
 
-    public function getRegion(): string
+    public function getRegion(): ?string
     {
         return $this->region;
     }
@@ -155,7 +158,7 @@ class Customer
         $this->region = $region;
     }
 
-    public function getCountryCode(): string
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
@@ -165,7 +168,7 @@ class Customer
         $this->countryCode = $countryCode;
     }
 
-    public function getContactPerson(): string
+    public function getContactPerson(): ?string
     {
         return $this->contactPerson;
     }
@@ -175,7 +178,7 @@ class Customer
         $this->contactPerson = $contactPerson;
     }
 
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -185,7 +188,7 @@ class Customer
         $this->phone = $phone;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -195,7 +198,7 @@ class Customer
         $this->email = $email;
     }
 
-    public function getWeb(): string
+    public function getWeb(): ?string
     {
         return $this->web;
     }
@@ -205,7 +208,7 @@ class Customer
         $this->web = $web;
     }
 
-    public function getFax(): string
+    public function getFax(): ?string
     {
         return $this->fax;
     }
@@ -215,7 +218,7 @@ class Customer
         $this->fax = $fax;
     }
 
-    public function getPersonalComment(): string
+    public function getPersonalComment(): ?string
     {
         return $this->personalComment;
     }
@@ -223,5 +226,25 @@ class Customer
     public function setPersonalComment(string $personalComment): void
     {
         $this->personalComment = $personalComment;
+    }
+
+    public function getDefaultInvoiceLanguage(): ?string
+    {
+        return $this->defaultInvoiceLanguage;
+    }
+
+    public function setDefaultInvoiceLanguage(?string $defaultInvoiceLanguage): void
+    {
+        $this->defaultInvoiceLanguage = $defaultInvoiceLanguage;
+    }
+
+    public function hasSurcharge(): ?bool
+    {
+        return $this->hasSurcharge;
+    }
+
+    public function withSurcharge(?bool $surcharge): void
+    {
+        $this->hasSurcharge = $surcharge;
     }
 }

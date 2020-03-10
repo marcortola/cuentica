@@ -41,6 +41,7 @@ final class RequestBuilder
         }
 
         if (null !== $body) {
+            $request = $request->withHeader('Content-type', 'application/json');
             $request = $request->withBody($this->streamFactory->createStream($body));
         }
 

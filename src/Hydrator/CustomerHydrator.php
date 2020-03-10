@@ -111,4 +111,101 @@ class CustomerHydrator implements Hydrator
 
         return $customer;
     }
+
+    public function dehydrate($object): array
+    {
+        if (!$object instanceof Customer) {
+            throw new HydrationException(
+                sprintf('Class should be "%s", "%s" given', Customer::class, \get_class($object))
+            );
+        }
+
+        $data = [];
+
+        if (null !== $object->getAddress()) {
+            $data['address'] = $object->getAddress();
+        }
+
+        if (null !== $object->getTown()) {
+            $data['town'] = $object->getTown();
+        }
+
+        if (null !== $object->getPostalCode()) {
+            $data['postal_code'] = $object->getPostalCode();
+        }
+
+        if (null !== $object->getCif()) {
+            $data['cif'] = $object->getCif();
+        }
+
+        if (null !== $object->getTradeName()) {
+            $data['tradename'] = $object->getTradeName();
+        }
+
+        if (null !== $object->getBusinessName()) {
+            $data['business_name'] = $object->getBusinessName();
+        }
+
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+
+        if (null !== $object->getFirstSurname()) {
+            $data['surname_1'] = $object->getFirstSurname();
+        }
+
+        if (null !== $object->getBusinessType()) {
+            $data['business_type'] = $object->getBusinessType();
+        }
+
+        if (null !== $object->getRegion()) {
+            $data['region'] = $object->getRegion();
+        }
+
+        if (null !== $object->getLastSurname()) {
+            $data['surname_2'] = $object->getLastSurname();
+        }
+
+        if (null !== $object->getCountryCode()) {
+            $data['country_code'] = $object->getCountryCode();
+        }
+
+        if (null !== $object->getDefaultPaymentMethod()) {
+            $data['default_payment_method'] = $object->getDefaultPaymentMethod();
+        }
+
+        if (null !== $object->getFax()) {
+            $data['fax'] = $object->getFax();
+        }
+
+        if (null !== $object->getPhone()) {
+            $data['phone'] = $object->getPhone();
+        }
+
+        if (null !== $object->getWeb()) {
+            $data['web'] = $object->getWeb();
+        }
+
+        if (null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
+        }
+
+        if (null !== $object->getContactPerson()) {
+            $data['contact_person'] = $object->getContactPerson();
+        }
+
+        if (null !== $object->getPersonalComment()) {
+            $data['personal_comment'] = $object->getPersonalComment();
+        }
+
+        if (null !== $object->getDefaultInvoiceLanguage()) {
+            $data['default_invoice_language'] = $object->getDefaultInvoiceLanguage();
+        }
+
+        if (null !== $object->hasSurcharge()) {
+            $data['has_surcharge'] = $object->hasSurcharge();
+        }
+
+        return $data;
+    }
 }

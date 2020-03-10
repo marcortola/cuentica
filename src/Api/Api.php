@@ -41,17 +41,51 @@ abstract class Api
 
     /**
      * @param string[] $parameters
+     * @param string[] $headers
      * @throws ClientExceptionInterface
      */
-    protected function httpGet(string $path, array $parameters = []): ResponseInterface
+    protected function httpGet(string $path, array $parameters = [], array $headers = []): ResponseInterface
     {
         if (\count($parameters) > 0) {
             $path .= '?'.http_build_query($parameters);
         }
 
-        $request = $this->requestBuilder->create('GET', $path);
+        $request = $this->requestBuilder->create('GET', $path, $headers);
 
         return $this->httpClient->sendRequest($request);
+    }
+
+    /**
+     * @param mixed[] $parameters
+     * @param mixed[] $headers
+     * @throws ClientExceptionInterface
+     */
+    protected function httpPost(string $path, array $parameters = [], array $headers = []): ResponseInterface
+    {
+        $request = $this->requestBuilder->create(
+            'POST',
+            $path,
+            $headers,
+            $this->createJsonBody($parameters)
+        );
+
+        return $this->httpClient->sendRequest($request);
+    }
+
+    /**
+     * @param mixed[] $parameters
+     */
+    private function createJsonBody(array $parameters): ?string
+    {
+        if (0 === \count($parameters)) {
+            return null;
+        }
+
+        try {
+            return json_encode($parameters, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            return null;
+        }
     }
 
     /**
