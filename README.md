@@ -17,7 +17,37 @@ $ composer require marcortola/cuentica
 Usage
 ------------
 ```php
-TODO
+use MarcOrtola\Cuentica\CuenticaClient;
+
+$cuenticaClient = CuenticaClient::create('your_auth_token');
+
+// Find a customer by ID.
+$customer = $cuenticaClient->customer()->customer(1);
+
+// Update a customer by ID.
+$customer = $cuenticaClient->customer()->customer(1);
+$customer->setCountryCode('US');
+$cuenticaClient->customer()->update($customer);
+
+// Create a customer (it's individual, but can be a company or a generic one).
+$customer = new Individual(
+    'My street',
+    'My City',
+    '40100',
+    '44444444I',
+    'My region',
+    'My name',
+    'My surname'
+);
+$cuenticaClient->customer()->create($customer);
+
+// Create an invoice.
+$invoice = new Invoice(
+    true,
+    [new InvoiceLine(1, 'Concept', 100, 2, 10, 4)],
+    [new Charge(false, 103.88, 'other', 42133)]
+);
+$cuenticaClient->invoice()->create($invoice);
 ```
 Read the Cuéntica API documentation [here](https://apidocs.cuentica.com/versions/latest_release/).
 
