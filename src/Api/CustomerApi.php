@@ -34,7 +34,7 @@ class CustomerApi extends Api
     }
 
     /**
-     * @see https://apidocs.cuentica.com/versions/latest_release/#customer
+     * @see https://apidocs.cuentica.com/versions/latest_release/#customer-id
      * @throws DomainException
      * @throws ClientExceptionInterface
      */
