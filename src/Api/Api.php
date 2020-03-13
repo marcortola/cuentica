@@ -14,21 +14,12 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @template T
- */
 abstract class Api
 {
     protected ClientInterface $httpClient;
     protected RequestBuilder $requestBuilder;
-    /**
-     * @var Hydrator<T>
-     */
     protected Hydrator $hydrator;
 
-    /**
-     * @param Hydrator<T> $hydrator
-     */
     public function __construct(
         ClientInterface $httpClient,
         RequestBuilder $requestBuilder,
@@ -74,6 +65,23 @@ abstract class Api
 
     /**
      * @param mixed[] $parameters
+     * @param mixed[] $headers
+     * @throws ClientExceptionInterface
+     */
+    protected function httpPut(string $path, array $parameters = [], array $headers = []): ResponseInterface
+    {
+        $request = $this->requestBuilder->create(
+            'PUT',
+            $path,
+            $headers,
+            $this->createJsonBody($parameters)
+        );
+
+        return $this->httpClient->sendRequest($request);
+    }
+
+    /**
+     * @param mixed[] $parameters
      */
     private function createJsonBody(array $parameters): ?string
     {
@@ -89,8 +97,7 @@ abstract class Api
     }
 
     /**
-     * @param class-string<T> $class
-     * @return T
+     * @return mixed
      * @throws DomainException
      */
     protected function handleResponse(ResponseInterface $response, string $class)
