@@ -301,11 +301,11 @@ class Invoice implements Arrayable, CreatableFromArray
         }
 
         if (null !== $this->invoiceNumber) {
-            $data['invoice_number'] = $this->invoiceNumber;
+            $data['number'] = $this->invoiceNumber;
         }
 
         if (null !== $this->invoiceSerie) {
-            $data['invoice_serie'] = $this->invoiceSerie;
+            $data['serie'] = $this->invoiceSerie;
         }
 
         if (null !== $this->rectificationCause) {
