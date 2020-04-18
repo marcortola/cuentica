@@ -257,7 +257,7 @@ class Invoice implements Arrayable, CreatableFromArray
         }
 
         foreach ($this->getTags() as $tag) {
-            $data['tag'][] = $tag;
+            $data['tags'][] = $tag->getName();
         }
 
         if (null !== $this->id) {
