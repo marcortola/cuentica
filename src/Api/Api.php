@@ -9,6 +9,7 @@ use MarcOrtola\Cuentica\Exception\Domain\TooManyRequestsException;
 use MarcOrtola\Cuentica\Exception\Domain\UnauthorizedException;
 use MarcOrtola\Cuentica\Exception\Domain\UnknownException;
 use MarcOrtola\Cuentica\Hydrator\Hydrator;
+use MarcOrtola\Cuentica\Model\Collection;
 use MarcOrtola\Cuentica\RequestBuilder;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -31,7 +32,7 @@ abstract class Api
     }
 
     /**
-     * @param string[] $parameters
+     * @param array<string|int> $parameters
      * @param string[] $headers
      * @throws ClientExceptionInterface
      */
@@ -120,7 +121,13 @@ abstract class Api
     {
         $this->handleErrors($response);
 
-        return $this->hydrator->hydrate($response, $class);
+        $response = $this->hydrator->hydrate($response, $class);
+
+        if ($response instanceof Collection) {
+            return $response->toArray();
+        }
+
+        return $response;
     }
 
     /**

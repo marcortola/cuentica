@@ -4,11 +4,32 @@ namespace MarcOrtola\Cuentica\Api;
 
 use MarcOrtola\Cuentica\Exception\Domain\DomainException;
 use MarcOrtola\Cuentica\Model\Customer\Customer;
+use MarcOrtola\Cuentica\Model\Customer\CustomerCollection;
 use MarcOrtola\Cuentica\Model\Customer\CustomerFactory;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class CustomerApi extends Api
 {
+    /**
+     * @see https://apidocs.cuentica.com/versions/latest_release/?php#customer
+     * @throws DomainException
+     * @throws ClientExceptionInterface
+     *
+     * @return Customer[]
+     */
+    public function search(string $query, ?int $pageSize = null, ?int $page = null): array
+    {
+        $param = [
+            'page_size' => $pageSize ?? 100,
+            'page' => $page ?? 1,
+            'q' => $query,
+        ];
+
+        $response = $this->httpGet('/customer', $param);
+
+        return $this->handleResponse($response, CustomerCollection::class);
+    }
+
     /**
      * @see https://apidocs.cuentica.com/versions/latest_release/#customer-id
      * @throws DomainException
