@@ -29,10 +29,10 @@ $customer->setCountryCode('US');
 $cuenticaClient->customer()->update($customer);
 
 // Delete a customer by ID.
-$customer = $cuenticaClient->customer()->delete(1);
+$cuenticaClient->customer()->delete(1);
 
 // Search customers.
-$customer = $cuenticaClient->customer()->search('my query string', $pageSize, $page);
+$customers = $cuenticaClient->customer()->search('my query string', $pageSize, $page);
 
 // Create a customer (it's individual, but can be a company or a generic one).
 $customer = new Individual(
