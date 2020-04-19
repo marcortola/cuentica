@@ -117,9 +117,13 @@ abstract class Api
      * @return mixed
      * @throws DomainException
      */
-    protected function handleResponse(ResponseInterface $response, string $class)
+    protected function handleResponse(ResponseInterface $response, ?string $class = null)
     {
         $this->handleErrors($response);
+
+        if (null === $class) {
+            return $response->getBody()->__toString();
+        }
 
         $response = $this->hydrator->hydrate($response, $class);
 

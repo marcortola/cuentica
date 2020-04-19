@@ -22,6 +22,18 @@ class InvoiceApi extends Api
     }
 
     /**
+     * @see https://apidocs.cuentica.com/versions/latest_release/#customer-id
+     * @throws DomainException
+     * @throws ClientExceptionInterface
+     */
+    public function pdf(int $id): string
+    {
+        $response = $this->httpGet('/invoice/'.$id.'/pdf');
+
+        return $this->handleResponse($response);
+    }
+
+    /**
      * @see https://apidocs.cuentica.com/versions/latest_release/#customer
      * @throws DomainException
      * @throws ClientExceptionInterface
