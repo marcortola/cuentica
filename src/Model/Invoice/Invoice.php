@@ -265,11 +265,11 @@ class Invoice implements Arrayable, CreatableFromArray
         }
 
         if (null !== $this->business) {
-            $data['business'] = $this->business->toArray();
+            $data['business'] = $this->business->getId();
         }
 
         if (null !== $this->customer) {
-            $data['customer'] = $this->customer->toArray();
+            $data['customer'] = $this->customer->getId();
         }
 
         if (null !== $this->amountDetails) {
