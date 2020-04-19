@@ -44,4 +44,16 @@ class CustomerApi extends Api
 
         return $this->handleResponse($response, CustomerFactory::class);
     }
+
+    /**
+     * @see https://apidocs.cuentica.com/versions/latest_release/#customer-id
+     * @throws DomainException
+     * @throws ClientExceptionInterface
+     */
+    public function delete(int $id): void
+    {
+        $response = $this->httpDelete('/customer/'.$id);
+
+        $this->handleErrors($response);
+    }
 }

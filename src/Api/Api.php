@@ -82,6 +82,22 @@ abstract class Api
 
     /**
      * @param mixed[] $parameters
+     * @param mixed[] $headers
+     * @throws ClientExceptionInterface
+     */
+    protected function httpDelete(string $path, array $parameters = [], array $headers = []): ResponseInterface
+    {
+        if (\count($parameters) > 0) {
+            $path .= '?'.http_build_query($parameters);
+        }
+
+        $request = $this->requestBuilder->create('DELETE', $path, $headers);
+
+        return $this->httpClient->sendRequest($request);
+    }
+
+    /**
+     * @param mixed[] $parameters
      */
     private function createJsonBody(array $parameters): ?string
     {
@@ -102,9 +118,7 @@ abstract class Api
      */
     protected function handleResponse(ResponseInterface $response, string $class)
     {
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
+        $this->handleErrors($response);
 
         return $this->hydrator->hydrate($response, $class);
     }
@@ -114,6 +128,10 @@ abstract class Api
      */
     protected function handleErrors(ResponseInterface $response): void
     {
+        if (200 === $response->getStatusCode()) {
+            return;
+        }
+
         $message = $response->getBody()->__toString();
 
         switch ($response->getStatusCode()) {
