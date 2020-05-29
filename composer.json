@@ -39,15 +39,19 @@
         }
     },
     "scripts": {
-        "test": [
+        "cs": [
             "composer normalize --dry-run --no-interaction",
             "vendor/bin/ecs check src --no-interaction",
             "vendor/bin/phpstan analyse --no-interaction",
             "vendor/bin/phpunit"
         ],
-        "test-fix": [
+        "cs-fix": [
             "composer normalize --no-interaction",
             "vendor/bin/ecs check src --fix --no-interaction"
+        ],
+        "test": [
+            "vendor/bin/phpstan analyse --no-interaction",
+            "vendor/bin/phpunit"
         ]
     }
 }

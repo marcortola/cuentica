@@ -10,10 +10,11 @@ class Individual extends Customer
         string $postalCode,
         string $cif,
         string $region,
+        string $countryCode,
         string $name,
         string $firstSurname
     ) {
-        parent::__construct($address, $town, $postalCode, $cif, $region);
+        parent::__construct($address, $town, $postalCode, $cif, $region, $countryCode);
 
         $this->businessType = 'individual';
         $this->setName($name);
@@ -34,6 +35,7 @@ class Individual extends Customer
             $customer->getPostalCode(),
             $customer->getCif(),
             $customer->getRegion(),
+            $customer->getCountryCode(),
             $data['name'],
             $data['surname_1']
         );

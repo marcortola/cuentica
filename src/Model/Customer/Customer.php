@@ -79,7 +79,15 @@ class Customer implements Arrayable, CreatableFromArray
 
     public function setDefaultPaymentMethod(?string $defaultPaymentMethod): void
     {
-        Assert::oneOf($defaultPaymentMethod, ['cash', 'receipt', 'wire_transfer', 'card', 'promissory_note', 'other']);
+        Assert::oneOf($defaultPaymentMethod, [
+            null,
+            'cash',
+            'receipt',
+            'wire_transfer',
+            'card',
+            'promissory_note',
+            'other',
+        ]);
         $this->defaultPaymentMethod = $defaultPaymentMethod;
     }
 
@@ -153,7 +161,7 @@ class Customer implements Arrayable, CreatableFromArray
         $this->region = $region;
     }
 
-    public function getCountryCode(): ?string
+    public function getCountryCode(): string
     {
         return $this->countryCode;
     }
@@ -230,7 +238,7 @@ class Customer implements Arrayable, CreatableFromArray
 
     public function setDefaultInvoiceLanguage(?string $defaultInvoiceLanguage): void
     {
-        Assert::oneOf($defaultInvoiceLanguage, ['default', 'es', 'eu', 'ca', 'en']);
+        Assert::oneOf($defaultInvoiceLanguage, [null, 'default', 'es', 'eu', 'ca', 'en']);
         $this->defaultInvoiceLanguage = $defaultInvoiceLanguage;
     }
 

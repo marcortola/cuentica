@@ -13,10 +13,11 @@ class Company extends Customer
         string $postalCode,
         string $cif,
         string $region,
+        string $countryCode,
         string $businessName,
         string $tradeName
     ) {
-        parent::__construct($address, $town, $postalCode, $cif, $region);
+        parent::__construct($address, $town, $postalCode, $cif, $region, $countryCode);
 
         $this->businessType = 'company';
         $this->businessName = $businessName;
@@ -47,6 +48,7 @@ class Company extends Customer
             $customer->getPostalCode(),
             $customer->getCif(),
             $customer->getRegion(),
+            $customer->getCountryCode(),
             $data['business_name'],
             $data['tradename']
         );
