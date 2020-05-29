@@ -13,7 +13,7 @@ Installation
 $ composer require marcortola/cuentica
 ```
 
-Usage
+Usage examples
 ------------
 ```php
 use MarcOrtola\Cuentica\CuenticaClient;
@@ -27,6 +27,12 @@ $customer = $cuenticaClient->customer()->customer(1);
 $customer = $cuenticaClient->customer()->customer(1);
 $customer->setCountryCode('US');
 $cuenticaClient->customer()->update($customer);
+
+// Delete a customer by ID.
+$cuenticaClient->customer()->delete(1);
+
+// Search customers.
+$customers = $cuenticaClient->customer()->search('my query string', $pageSize, $page);
 
 // Create a customer (it's individual, but can be a company or a generic one).
 $customer = new Individual(
@@ -47,6 +53,12 @@ $invoice = new Invoice(
     [new Charge(false, 103.88, 'other', 42133)]
 );
 $cuenticaClient->invoice()->create($invoice);
+
+// Get invoice PDF contents.
+$pdfContents = $cuenticaClient->invoice()->pdf(1);
+
+// Find an invoice by ID.
+$pdfContents = $cuenticaClient->invoice()->invoice(1);
 ```
 Read the Cuéntica API documentation [here](https://apidocs.cuentica.com/versions/latest_release/).
 
