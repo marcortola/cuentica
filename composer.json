@@ -15,18 +15,17 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "php-http/discovery": "^1.7",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.2",
         "phpstan/phpstan": "^0.12.14",
         "phpstan/phpstan-strict-rules": "^0.12.2",
         "phpunit/phpunit": "^9",
-        "symplify/easy-coding-standard": "^7.2"
+        "symplify/easy-coding-standard": "11.1.19"
     },
     "autoload": {
         "psr-4": {
@@ -37,21 +36,5 @@
         "psr-4": {
             "MarcOrtola\\Cuentica\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "cs": [
-            "composer normalize --dry-run --no-interaction",
-            "vendor/bin/ecs check src --no-interaction",
-            "vendor/bin/phpstan analyse --no-interaction",
-            "vendor/bin/phpunit"
-        ],
-        "cs-fix": [
-            "composer normalize --no-interaction",
-            "vendor/bin/ecs check src --fix --no-interaction"
-        ],
-        "test": [
-            "vendor/bin/phpstan analyse --no-interaction",
-            "vendor/bin/phpunit"
-        ]
     }
 }
